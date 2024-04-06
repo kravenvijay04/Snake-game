@@ -1,0 +1,21 @@
+*{
+    background-color:rgb(1, 1, 65);
+}
+body{
+    font-family: "Ubuntu", sans-serif;
+    font-weight: lighter;
+    font-style: normal;
+    text-align: center;
+}
+h3{
+    color:red;
+    margin-top: 2em;
+}
+#gameboard{
+    border: 10px solid rgb(134, 134, 134);
+}
+#score{
+    margin-top: 10px;
+    font-size: 1.5em;
+    color:goldenrod;
+}
