@@ -24,18 +24,16 @@ function startgame(){
     displayfood();
     Timemovement();
 }
-function clearboard(){
-    context.fillStyle='#212121';
-    context.fillRect(0,0,WIDTH,HEIGHT)
-}
 function createfood(){
 Xfood=Math.floor(Math.random()*WIDTH/UNIT)*UNIT;
 Yfood=Math.floor(Math.random()*HEIGHT/UNIT)*UNIT;
 }
+
 function displayfood(){
     context.fillStyle='red';
     context.fillRect(Xfood,Yfood,UNIT,UNIT);
 }
+
 function drawsnake(){
     context.fillStyle="aqua"
     context.strokeStyle="black"
@@ -43,6 +41,16 @@ function drawsnake(){
         context.fillRect(snakepart.x,snakepart.y,UNIT,UNIT)
         context.strokeRect(snakepart.x,snakepart.y,UNIT,UNIT)
     })
+}
+
+function Timemovement(){
+    setTimeout(()=>{
+    clearboard();
+    displayfood();
+    movesnake();
+    drawsnake();
+    Timemovement();
+    },100)
 }
 function movesnake(){
     let head={
@@ -52,12 +60,7 @@ function movesnake(){
     snake.unshift(head);
     snake.pop();
 }
-function Timemovement(){
-    setTimeout(()=>{
-    clearboard();
-    displayfood();
-    movesnake();
-    drawsnake();
-    Timemovement();
-    },100)
+function clearboard(){
+    context.fillStyle='#212121';
+    context.fillRect(0,0,WIDTH,HEIGHT)
 }
