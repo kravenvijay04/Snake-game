@@ -17,6 +17,8 @@ let snake=[
 ]
 startgame();
 
+window.addEventListener('keydown',Keypress);
+
 function startgame(){
     context.fillStyle='#212121';
     context.fillRect(0,0,WIDTH,HEIGHT)
@@ -63,4 +65,30 @@ function movesnake(){
 function clearboard(){
     context.fillStyle='#212121';
     context.fillRect(0,0,WIDTH,HEIGHT)
+}
+
+function Keypress(event){
+    const LEFT =37;
+    const UP =38;
+    const RIGHT =39;
+    const DOWN = 40;
+
+    switch(true){
+        case(event.keyCode==LEFT && Xvel!=UNIT):
+            Xvel=-UNIT;
+            Yvel=0;
+            break;
+        case(event.keyCode==RIGHT && Xvel!=-UNIT):
+            Xvel=UNIT;
+            Yvel=0;
+            break;
+        case(event.keyCode==UP && Yvel!=UNIT):
+            Xvel=0;
+            Yvel=-UNIT;
+            break;
+        case(event.keyCode==DOWN && Yvel!=-UNIT):
+            Xvel=0;
+            Yvel=UNIT;
+            break;
+    }
 }
