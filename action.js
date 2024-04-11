@@ -1,5 +1,6 @@
 const gameboard = document.getElementById('gameboard');
 const context = gameboard.getContext('2d');
+let scoreboard=document.getElementById("scoreval")
 
 let WIDTH=gameboard.width;
 let HEIGHT=gameboard.height;
@@ -8,6 +9,7 @@ let Xfood;
 let Yfood;
 let Xvel=25;
 let Yvel=0;
+let score =0;
 
 let snake=[
     {x:UNIT*3,y:0},
@@ -60,7 +62,15 @@ function movesnake(){
         y:snake[0].y+Yvel
     }
     snake.unshift(head);
-    snake.pop();
+    if (snake[0].x==Xfood && snake[0].y==Yfood){
+        createfood();
+        score+=1;
+        scoreboard.textContent=score;
+    }
+    else{
+        snake.pop();
+    }
+    
 }
 function clearboard(){
     context.fillStyle='#212121';
